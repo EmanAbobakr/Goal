@@ -6,7 +6,7 @@ import { GoalInput } from "./components/GoalInput";
 export default function App() {
   const [goals, setGoalsList] = React.useState([]);
 
-  const onClickBtn = (enteredGoalText) => {
+  const addGoalHandler = (enteredGoalText) => {
     console.log("pressed btn");
     setGoalsList(() => [
       ...goals,
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <GoalInput pressBtn={onClickBtn} />
+      <GoalInput pressBtn={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={goals}
