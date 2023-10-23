@@ -10,7 +10,7 @@ export default function App() {
     console.log("pressed btn");
     setGoalsList(() => [
       ...goals,
-      { data: enteredGoalText, key: Math.random().toString },
+      { data: enteredGoalText, key: Math.random().toString() },
     ]);
     console.log(goals);
   };
