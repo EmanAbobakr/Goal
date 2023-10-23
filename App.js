@@ -6,22 +6,28 @@ import { GoalInput } from "./components/GoalInput";
 export default function App() {
   const [goals, setGoalsList] = React.useState([]);
 
-  const onClickBtn = (enteredGoalText) => {
+  const addGoalHandler = (enteredGoalText) => {
     console.log("pressed btn");
     setGoalsList(() => [
       ...goals,
-      { data: enteredGoalText, key: Math.random().toString },
+      { data: enteredGoalText, key: Math.random().toString() },
     ]);
     console.log(goals);
   };
 
+  const deleteGoalHandler = (deletedItemId) => {
+    setGoalsList(() => goals.filter((item) => item.key !== deletedItemId));
+  };
+
   return (
     <View style={styles.container}>
-      <GoalInput pressBtn={onClickBtn} />
+      <GoalInput pressBtn={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={goals}
-          renderItem={(itemData) => <GoalItem text={itemData.item.data} />}
+          renderItem={(itemData) => (
+            <GoalItem item={itemData.item} pressItem={deleteGoalHandler} />
+          )}
         />
       </View>
     </View>

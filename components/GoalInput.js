@@ -8,7 +8,7 @@ export function GoalInput(props) {
     setChangeText(txt);
   };
 
-  const onClickBtn = (enteredGoalText) => {
+  const addGoalHandler = (enteredGoalText) => {
     props.pressBtn(text);
     setChangeText("");
   };
@@ -16,7 +16,7 @@ export function GoalInput(props) {
   return (
     <View style={styles.inputContainer}>
       <TextInput style={styles.input} onChangeText={onChangeTxt} value={text} />
-      <Button title="Add Goal" onPress={onClickBtn} color="#237c94" />
+      <Button title="Add Goal" onPress={addGoalHandler} color="#237c94" />
     </View>
   );
 }
