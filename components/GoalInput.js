@@ -4,7 +4,6 @@ import { StyleSheet, View, TextInput, Button } from "react-native";
 export function GoalInput(props) {
   const [text, setChangeText] = React.useState("");
   const onChangeTxt = (txt) => {
-    console.log(txt);
     setChangeText(txt);
   };
 
