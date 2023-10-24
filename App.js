@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, FlatList, Button } from "react-native";
 import { GoalItem } from "./components/GoalItem";
 import { GoalInput } from "./components/GoalInput";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [modalIsVisible, setModalVisibilty] = React.useState(true);
@@ -28,34 +29,37 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Button
-        title="Add New Goal"
-        onPress={startAddGoalHandler}
-        color="#237c94"
-      />
-      <GoalInput
-        isVisible={modalIsVisible}
-        onAdd={addGoalHandler}
-        onCancel={endAddGoalHandler}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={goals}
-          renderItem={(itemData) => (
-            <GoalItem item={itemData.item} pressItem={deleteGoalHandler} />
-          )}
+    <>
+      <StatusBar style="light" />
+      <View style={styles.container}>
+        <Button
+          title="Add New Goal"
+          onPress={startAddGoalHandler}
+          color="#237c94"
         />
+        <GoalInput
+          isVisible={modalIsVisible}
+          onAdd={addGoalHandler}
+          onCancel={endAddGoalHandler}
+        />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={goals}
+            renderItem={(itemData) => (
+              <GoalItem item={itemData.item} pressItem={deleteGoalHandler} />
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 24,
     paddingHorizontal: 8,
+    marginTop: 44,
   },
   goalsContainer: {
     flex: 5,
